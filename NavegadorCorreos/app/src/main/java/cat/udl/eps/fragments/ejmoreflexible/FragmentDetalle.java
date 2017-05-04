@@ -19,9 +19,7 @@ public class FragmentDetalle extends Fragment {
 	}
 	
 	public void mostrarDetalle(String texto) {
-		
-
-		
+		TextView txtDetalle = (TextView) getView().findViewById(R.id.TxtDetalle);
 		txtDetalle.setText(texto);
 	}
 }

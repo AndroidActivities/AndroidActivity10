@@ -13,10 +13,8 @@ public class DetalleActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detalle);
-
-
-
-		
-
+		FragmentDetalle detalle = (FragmentDetalle) getSupportFragmentManager().
+				findFragmentById(R.id.FrgDetalle);
+		detalle.mostrarDetalle(getIntent().getStringExtra(EXTRA_TEXTO));
 	}
 }

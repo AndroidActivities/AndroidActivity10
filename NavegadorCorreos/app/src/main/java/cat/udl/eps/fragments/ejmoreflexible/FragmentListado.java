@@ -40,31 +40,23 @@ public class FragmentListado extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle state) {
 		super.onActivityCreated(state);
-		
 		lstListado = (ListView)getView().findViewById(R.id.LstListado);
-		
 		lstListado.setAdapter(new AdaptadorCorreos(this));
-		
 		lstListado.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> list, View view, int pos, long id) {
-
-					
-
-
-
+				if (listener != null) {
+					listener.onCorreoSeleccionado((Correo) lstListado.getAdapter().getItem(pos));
+				}
 			}
-			
 		});
 	}
-	
-	
+
 	@Override
 	public void onAttach(Activity ac) {
 		super.onAttach(ac);
 		try {
-			
-
+			listener = (CorreosListener) ac;
 		}
 		catch (ClassCastException e) {
 			throw new ClassCastException(ac.toString() + " must implement OnCorreosListener");
@@ -77,8 +69,7 @@ public class FragmentListado extends Fragment {
     	Activity context;
     	
     	AdaptadorCorreos(FragmentListado fragmentListado) {
-    		
-
+    		super(fragmentListado.getActivity(),R.layout.listitem_correo, datos);
     		this.context = fragmentListado.getActivity();
     	}
     	
@@ -101,7 +92,6 @@ public class FragmentListado extends Fragment {
 	}
 	
 	public void setCorreosListener(CorreosListener listener) {
-		
-
+		this.listener = listener;
 	}
 }

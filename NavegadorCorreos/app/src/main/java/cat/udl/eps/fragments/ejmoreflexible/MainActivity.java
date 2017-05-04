@@ -1,12 +1,10 @@
 package cat.udl.eps.fragments.ejmoreflexible;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
-
 import cat.udl.eps.fragments.ejmoreflexible.FragmentListado.CorreosListener;
-
-;
 
 public class MainActivity extends FragmentActivity implements CorreosListener {
 
@@ -14,11 +12,9 @@ public class MainActivity extends FragmentActivity implements CorreosListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		
-
-
-
+		FragmentListado fragmentListado = (FragmentListado) getSupportFragmentManager().
+				findFragmentById(R.id.FrgListado);
+		fragmentListado.setCorreosListener(this);
 	}
 
 	@Override
@@ -34,14 +30,12 @@ public class MainActivity extends FragmentActivity implements CorreosListener {
 		boolean hayDetalle = (fgdet != null && fgdet.isInLayout());
 		
 		if (hayDetalle) {
-
+			fgdet.mostrarDetalle(c.getTexto());
 		}
 		else {
-			
-
-
-
-
+			Intent i = new Intent(this, DetalleActivity.class);
+			i.putExtra(DetalleActivity.EXTRA_TEXTO, c.getTexto());
+			startActivity(i);
 		}
 		
 	}

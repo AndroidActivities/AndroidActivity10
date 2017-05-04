@@ -1,13 +1,14 @@
 package cat.udl.eps.fragments.ejbase;
 
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class ListFrag extends ListFragment{
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,9 +28,13 @@ public class ListFrag extends ListFragment{
 		DetailFrag frag = (DetailFrag) getFragmentManager().findFragmentById(R.id.frag_capt);
 		if (frag != null && frag.isInLayout()) {
 			frag.showText(getCapt(item));
+		}else{
+			Intent i = new Intent(getActivity(),DetailActivity.class);
+			i.putExtra("value",getCapt(item));
+			startActivity(i);
 		}
 	}
-	
+
 	private String getCapt(String ship) {
 		if (ship.toLowerCase().contains("enterprise")) {
 			return "Johnathan Archer";
