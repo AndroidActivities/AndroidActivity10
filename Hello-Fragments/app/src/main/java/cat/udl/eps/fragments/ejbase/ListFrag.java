@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class ListFrag extends ListFragment{
-
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,12 +29,12 @@ public class ListFrag extends ListFragment{
 		if (frag != null && frag.isInLayout()) {
 			frag.showText(getCapt(item));
 		}else{
-			Intent i = new Intent(getActivity(),DetailActivity.class);
+			Intent i= new Intent(getActivity(),DetailActivity.class);
 			i.putExtra("value",getCapt(item));
 			startActivity(i);
 		}
 	}
-
+	
 	private String getCapt(String ship) {
 		if (ship.toLowerCase().contains("enterprise")) {
 			return "Johnathan Archer";

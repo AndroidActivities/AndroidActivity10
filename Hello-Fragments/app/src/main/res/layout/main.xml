@@ -5,12 +5,6 @@
     android:orientation="horizontal" >
     <fragment  class="cat.udl.eps.fragments.ejbase.ListFrag"
         android:id="@+id/frag_series"
-        android:layout_width="200dip"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?android:attr/actionBarSize"  />
-    
-    <fragment class="cat.udl.eps.fragments.ejbase.DetailFrag"
-        android:id="@+id/frag_capt"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"   />
+        android:layout_height="match_parent" />
 </LinearLayout>
