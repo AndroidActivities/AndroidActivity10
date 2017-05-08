@@ -8,7 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class ListFrag extends ListFragment{
-	
+
+	public static final String VALUE = "value";
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,7 +32,7 @@ public class ListFrag extends ListFragment{
 			frag.showText(getCapt(item));
 		}else{
 			Intent i= new Intent(getActivity(),DetailActivity.class);
-			i.putExtra("value",getCapt(item));
+			i.putExtra(VALUE, getCapt(item).toString());
 			startActivity(i);
 		}
 	}
